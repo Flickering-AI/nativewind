@@ -8,6 +8,8 @@ import { Effect, observable, ReadableObservable } from "../observable";
  */
 export const rem = observable(14);
 
+export const designRatio = observable(1);
+
 export { INTERNAL_RESET } from "../../shared";
 
 /**

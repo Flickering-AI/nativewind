@@ -27,3 +27,50 @@ export const rem = {
     _rem.set(value);
   },
 };
+export const _designRatio = observable(1);
+export const designRatio = {
+  get(effect?: Effect) {
+    return _designRatio.get(effect);
+  },
+  set(value: number) {
+    _designRatio.set(value);
+    if (!isSSR) {
+      globalThis.window.document.documentElement.style.fontSize = `${value}px`;
+    }
+  },
+  [INTERNAL_RESET](value = 1) {
+    _designRatio.set(value);
+  },
+};
+
+export const _vw = observable(1);
+export const vw = {
+  get(effect?: Effect) {
+    return _vw.get(effect);
+  },
+  set(value: number) {
+    _vw.set(value);
+    if (!isSSR) {
+      globalThis.window.document.documentElement.style.fontSize = `${value}px`;
+    }
+  },
+  [INTERNAL_RESET](value = 1) {
+    _vw.set(value);
+  },
+};
+
+export const _vh = observable(1);
+export const vh = {
+  get(effect?: Effect) {
+    return _vh.get(effect);
+  },
+  set(value: number) {
+    _vh.set(value);
+    if (!isSSR) {
+      globalThis.window.document.documentElement.style.fontSize = `${value}px`;
+    }
+  },
+  [INTERNAL_RESET](value = 1) {
+    _vh.set(value);
+  },
+};

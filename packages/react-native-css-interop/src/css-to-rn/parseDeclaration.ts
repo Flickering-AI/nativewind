@@ -1846,7 +1846,7 @@ export function parseLength(
   if ("unit" in length) {
     switch (length.unit) {
       case "px":
-        return length.value;
+        return [{}, "scaleSize", [length.value]];
       case "rem":
         if (typeof inlineRem === "number") {
           return length.value * inlineRem;

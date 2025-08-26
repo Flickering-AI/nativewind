@@ -18,7 +18,7 @@ import { systemColorScheme } from "./appearance-observables";
 import { textShadow } from "./resolvers/text-shadow";
 import { getUniversalVariable, getVariable } from "./styles";
 import { ReducerState, ReducerTracking, Refs, ShorthandResult } from "./types";
-import { rem, vh, vw } from "./unit-observables";
+import { designRatio, rem, vh, vw } from "./unit-observables";
 
 /**
  * Get the final value of a value descriptor
@@ -167,6 +167,12 @@ export function resolveValue(
         const remValue = rem.get(tracking.effect);
         if (typeof value === "number") {
           return cast(round(remValue * value));
+        }
+      }
+      case "scaleSize": {
+        const value = resolve(state, refs, tracking, descriptorArgs[0], style);
+        if (typeof value === "number") {
+          return cast(round(designRatio.get() * value));
         }
       }
       case "rnh": {

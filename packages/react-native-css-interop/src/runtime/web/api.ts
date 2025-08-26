@@ -9,7 +9,7 @@ import { interopComponents } from "./interopComponentsMap";
 
 export { StyleSheet } from "./stylesheet";
 export { colorScheme } from "./color-scheme";
-export { rem } from "./rem";
+export { rem, designRatio, vw, vh } from "./rem";
 
 const ForwardRefSymbol = Symbol.for("react.forward_ref");
 export { useColorScheme } from "./useColorScheme";

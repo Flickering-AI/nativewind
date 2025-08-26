@@ -21,7 +21,7 @@ import { getComponentType } from "./unwrap-components";
 
 export { StyleSheet } from "./stylesheet";
 export { colorScheme } from "./appearance-observables";
-export { rem } from "./unit-observables";
+export { rem, designRatio, vh, vw } from "./unit-observables";
 
 export const interopComponents = new Map<
   object | string,

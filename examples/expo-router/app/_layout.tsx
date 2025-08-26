@@ -1,14 +1,26 @@
+import { getScaleRatio } from "@/utils/screen";
 import "../global.css";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
+import { rem, designRatio, vw, vh } from "nativewind";
 import { memo, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
+import { INTERNAL_SET } from "react-native-css-interop/dist/shared";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
+rem.set(16 * getScaleRatio());
+designRatio.set(getScaleRatio());
+vw[INTERNAL_SET](Dimensions.get("window").width);
+vh[INTERNAL_SET](Dimensions.get("window").height);
+Dimensions.addEventListener("change", ({ window }) => {
+  rem.set(16 * getScaleRatio());
+  vw[INTERNAL_SET](window.width);
+  vh[INTERNAL_SET](window.height);
+});
 
 // export const unstable_settings = {
 //   // Ensure that reloading on `/modal` keeps a back button present.
