@@ -1,4 +1,4 @@
-import { INTERNAL_RESET } from "../../shared";
+import { INTERNAL_RESET, INTERNAL_SET } from "../../shared";
 import { Effect, observable } from "../observable";
 
 const isSSR = globalThis.window === undefined;
@@ -48,7 +48,7 @@ export const vw = {
   get(effect?: Effect) {
     return _vw.get(effect);
   },
-  set(value: number) {
+  [INTERNAL_SET](value: number) {
     _vw.set(value);
     if (!isSSR) {
       globalThis.window.document.documentElement.style.fontSize = `${value}px`;
@@ -64,7 +64,7 @@ export const vh = {
   get(effect?: Effect) {
     return _vh.get(effect);
   },
-  set(value: number) {
+  [INTERNAL_SET](value: number) {
     _vh.set(value);
     if (!isSSR) {
       globalThis.window.document.documentElement.style.fontSize = `${value}px`;
